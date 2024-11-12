@@ -3,18 +3,16 @@
   "version": "1.0.0",
   "description": "video handling with nodejs, react",
   "main": "index.js",
+  "author": "Jisu (jaeny96@naver.com)",
   "scripts": {
     "start": "npm-run-all --parallel start:**",
     "start:server": "cd server && nodemon server",
-    "start:client": "cd client && yarn dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:client": "cd client && yarn dev"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jaeny622/video-handling.git"
   },
-  "author": "Jisu (jaeny96@naver.com)",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jaeny622/video-handling/issues"
   },
