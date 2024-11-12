@@ -1,10 +1,13 @@
-import Routes from "./Routes/Routes";
+import { Suspense } from "react";
+
+import GlobalRoutes from "./Routes/Routes";
+import Loading from "./Pages/Loading";
 
 function App() {
   return (
-    <div>
-      <Routes />
-    </div>
+    <Suspense fallback={<Loading />}>
+      <GlobalRoutes />
+    </Suspense>
   );
 }
 
