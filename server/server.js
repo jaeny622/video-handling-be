@@ -1,11 +1,23 @@
-//server.js
-const express = require("express");
+import express from "express";
+import morgan from "morgan";
+import cors from "cors";
+
+import globalRouter from "./routers/globalRouter.js";
+import userRouter from "./routers/userRouter.js";
+import videoRouter from "./routers/videoRouter.js";
+
+const PORT = 4000;
+
 const app = express();
-const test = require("./test");
+const logger = morgan("dev");
 
-app.use("/api", test);
+app.use(cors({ origin: "http://localhost:5173" }), logger);
+app.use("/", globalRouter);
+app.use("/users", userRouter);
+app.use("/videos", videoRouter);
 
-const port = 3002; //node 서버가 사용할 포트 번호, 리액트의 포트번호(3000)와 충돌하지 않게 다른 번호로 할당
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
-});
+const handleListening = () => {
+  console.log(`Server listening on port ${PORT}`);
+};
+
+app.listen(PORT, handleListening);
