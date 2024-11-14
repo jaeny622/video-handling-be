@@ -1,4 +1,4 @@
-export const homeVideos = (req, res) => res.send("Home Videos");
+export const homeVideos = (req, res) => res.send({ pwd: "test" });
 export const search = (req, res) => res.send("Search");
 export const watch = (req, res) => res.send("Watch");
 export const editVideo = (req, res) => res.send("Edit Video");
