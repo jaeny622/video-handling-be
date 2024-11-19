@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 // 비디오 형태 정하는 부분
+// trim : 앞뒤 space 제거
 const videoSchema = new mongoose.Schema({
   title: { type: String, required: trie, trim: true, maxLength: 80 },
   fileUrl: { type: String, required: true },
@@ -17,6 +18,13 @@ const videoSchema = new mongoose.Schema({
   owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
 });
 
+// mongoose middleware
+// videoSchema.pre("save", async function () {
+// this : 저장하려는 video obj
+//   console.log(this);
+// });
+
+// static : modle의 static function 생성
 videoSchema.static("formatHashtags", function (hashtags) {
   return hashtags
     .split(",")
