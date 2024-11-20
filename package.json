@@ -5,9 +5,7 @@
   "main": "index.js",
   "author": "Jisu (jaeny96@naver.com)",
   "scripts": {
-    "dev": "npm-run-all --parallel start:**",
-    "dev:server": "cd server && nodemon --exec babel-node server",
-    "dev:client": "cd client && yarn dev"
+    "dev": "cd server && nodemon --exec babel-node server"
   },
   "repository": {
     "type": "git",
