@@ -1,8 +1,13 @@
 export const homeVideos = (req, res) => {
-  // Video.find(); selectAll
+  // Video.find({}).sort({createdAt:"desc"}); selectAll and sort 가능
   return res.send("home");
 };
-export const search = (req, res) => res.send("Search");
+export const search = (req, res) => {
+  // req.query; 쿼리 파라미터 체크
+  // regex 이용
+  // Video.find({title:{$regex : new RegExp(keyword,"i")}})
+  return res.send("Search");
+};
 export const watch = (req, res) => {
   // const { id } = req.params;
   // Video.findById();
