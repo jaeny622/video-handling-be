@@ -25,9 +25,9 @@ export const deleteVideo = (req, res) => {
   // Video.findByIdAndDelete();
   return res.send("Delete Video");
 };
-export const uploadVideo = (req, res) => {
-  console.log(req.body.video);
+export const uploadVideo = async (req, res) => {
   // video.save(); post
-  // Video.create(); create new db
+  await Video.create(req.body.video);
+
   return res.send({ text: "Upload Video" });
 };
