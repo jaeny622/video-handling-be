@@ -1,6 +1,6 @@
 export const homeVideos = (req, res) => {
   // Video.find({}).sort({createdAt:"desc"}); selectAll and sort 가능
-  return res.send("home");
+  return res.send([]);
 };
 export const search = (req, res) => {
   // req.query; 쿼리 파라미터 체크
@@ -24,7 +24,8 @@ export const deleteVideo = (req, res) => {
   return res.send("Delete Video");
 };
 export const uploadVideo = (req, res) => {
+  console.log(req.body.video);
   // video.save(); post
   // Video.create(); create new db
-  return res.send("Upload Video");
+  return res.send({ text: "Upload Video" });
 };
