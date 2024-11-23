@@ -1,6 +1,8 @@
-export const homeVideos = (req, res) => {
-  // Video.find({}).sort({createdAt:"desc"}); selectAll and sort 가능
-  return res.send([]);
+import Video from "../models/Video.js";
+
+export const homeVideos = async (req, res) => {
+  const videos = await Video.find({}).sort({ createdAt: "desc" });
+  return res.json(videos);
 };
 export const search = (req, res) => {
   // req.query; 쿼리 파라미터 체크

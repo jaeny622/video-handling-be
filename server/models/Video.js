@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 // 비디오 형태 정하는 부분
 // trim : 앞뒤 space 제거
 const videoSchema = new mongoose.Schema({
-  title: { type: String, required: trie, trim: true, maxLength: 80 },
+  title: { type: String, required: true, trim: true, maxLength: 80 },
   fileUrl: { type: String, required: true },
   thumbUrl: { type: String, required: true },
   description: { type: String, required: true, trim: true, minLength: 2 },
