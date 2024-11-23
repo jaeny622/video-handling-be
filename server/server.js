@@ -14,6 +14,8 @@ const app = express();
 const logger = morgan("dev");
 
 app.use(cors({ origin: "http://localhost:5173" }), logger);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use("/", globalRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
