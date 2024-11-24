@@ -20,12 +20,13 @@ export const editVideo = async (req, res) => {
   const flag = await Video.exists({ _id: id });
   console.log(flag);
   if (flag) await Video.findByIdAndUpdate(id, video);
-  return res.send({ success: "Edit Video" });
+  return res.send({ status: flag ? "success" : "not found" });
 };
-export const deleteVideo = (req, res) => {
-  // exist true or false 판단 : Video.exsists({_id:id});
-  // Video.findByIdAndDelete();
-  return res.send("Delete Video");
+export const deleteVideo = async (req, res) => {
+  const { id } = req.body;
+  const flag = await Video.exists({ _id: id });
+  if (flag) await Video.findByIdAndDelete(id);
+  return res.send({ status: flag ? "success" : "not found" });
 };
 export const uploadVideo = async (req, res) => {
   // video.save(); post
