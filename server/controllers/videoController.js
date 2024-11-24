@@ -1,15 +1,16 @@
 import Video from "../models/Video.js";
 
 export const homeVideos = async (req, res) => {
-  const videos = await Video.find({}).sort({ createdAt: "desc" });
+  const { keyword } = req.query;
+  let videos = [];
+  if (!keyword) videos = await Video.find({}).sort({ createdAt: "desc" });
+  else
+    videos = await Video.find({
+      title: { $regex: new RegExp(keyword, "i") },
+    });
   return res.json(videos);
 };
-export const search = (req, res) => {
-  // req.query; 쿼리 파라미터 체크
-  // regex 이용
-  // Video.find({title:{$regex : new RegExp(keyword,"i")}})
-  return res.send("Search");
-};
+
 export const getVideo = async (req, res) => {
   const { id } = req.params;
   const video = await Video.findById(id);
