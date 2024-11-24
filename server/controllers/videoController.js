@@ -15,10 +15,12 @@ export const getVideo = async (req, res) => {
   const video = await Video.findById(id);
   return res.send(video);
 };
-export const editVideo = (req, res) => {
-  // exist true or false 판단 : Video.exsists({_id:id});
-  // Video.findByIdAndUpdate();
-  return res.send("Edit Video");
+export const editVideo = async (req, res) => {
+  const { id, video } = req.body;
+  const flag = await Video.exists({ _id: id });
+  console.log(flag);
+  if (flag) await Video.findByIdAndUpdate(id, video);
+  return res.send({ success: "Edit Video" });
 };
 export const deleteVideo = (req, res) => {
   // exist true or false 판단 : Video.exsists({_id:id});
