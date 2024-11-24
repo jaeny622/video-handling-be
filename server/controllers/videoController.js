@@ -10,10 +10,10 @@ export const search = (req, res) => {
   // Video.find({title:{$regex : new RegExp(keyword,"i")}})
   return res.send("Search");
 };
-export const watch = (req, res) => {
-  // const { id } = req.params;
-  // Video.findById();
-  return res.send("Watch");
+export const getVideo = async (req, res) => {
+  const { id } = req.params;
+  const video = await Video.findById(id);
+  return res.send(video);
 };
 export const editVideo = (req, res) => {
   // exist true or false 판단 : Video.exsists({_id:id});
